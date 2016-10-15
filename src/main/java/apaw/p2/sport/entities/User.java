@@ -40,4 +40,8 @@ public class User {
 	public void setSport(Sport sport) {
 		this.sport = sport;
 	}
+	
+	public boolean practiceSport(String sportName){
+		return this.sport.getName().equals(sportName);
+	}
 }

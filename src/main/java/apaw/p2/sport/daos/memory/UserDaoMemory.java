@@ -14,18 +14,6 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
 	}
 
 	@Override
-	public List<String> findUsersBySport(int sportId) {
-		List<User> users = findAll();
-		List<String> nicknames = new ArrayList<>();
-		for (User user : users) {
-			if (user.getSport().getId() == sportId) {
-				nicknames.add(user.getNick());
-			}
-		}
-		return nicknames;
-	}
-
-	@Override
 	protected Integer getId(User entity) {
 		return entity.getId();
 	}
@@ -34,5 +22,28 @@ public class UserDaoMemory extends GenericMemoryDao<User> implements UserDao {
 	protected void setId(User entity, Integer id) {
 		entity.setId(id);
 	}
+
+	@Override
+	public List<User> findUsersBySport(String sportName) {
+		List<User> users = this.findAll();
+		List<User> sportUsers = new ArrayList<>();
+		for (User user : users) {
+			if (user.practiceSport(sportName)) {
+				sportUsers.add(user);
+			}
+		}
+		return sportUsers;
+	}
+	
+	@Override
+    public User findUserByNick(String nickname) {
+        List<User> users = this.findAll();
+        for (User user : users) {
+            if (user.getNick().equals(nickname)) {
+                return user;
+            }
+        }
+        return null;
+    }
 
 }

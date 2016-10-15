@@ -1,6 +1,8 @@
 package apaw.p2.sport.daos.memory;
 
 import java.util.HashMap;
+import java.util.List;
+
 import apaw.p2.sport.daos.SportDao;
 import apaw.p2.sport.entities.Sport;
 
@@ -12,14 +14,23 @@ public class SportDaoMemory extends GenericMemoryDao<Sport> implements SportDao 
 
 	@Override
 	protected Integer getId(Sport entity) {
-		// TODO Auto-generated method stub
-		return null;
+		return entity.getId();
 	}
 
 	@Override
 	protected void setId(Sport entity, Integer id) {
-		// TODO Auto-generated method stub
+		entity.setId(id);
+	}
 
+	@Override
+	public Sport findSportByName(String sportName) {
+		List<Sport> sports = this.findAll();
+        for (Sport sport : sports) {
+            if (sport.getName().equals(sportName)) {
+                return sport;
+            }
+        }
+        return null;
 	}
 
 }
