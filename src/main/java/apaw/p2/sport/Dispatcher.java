@@ -2,9 +2,7 @@ package apaw.p2.sport;
 
 import apaw.p2.sport.api.SportResource;
 import apaw.p2.sport.api.UserResource;
-import apaw.p2.sport.exceptions.InvalidSportNameException;
 import apaw.p2.sport.exceptions.RequestNotHandledException;
-import apaw.p2.sport.exceptions.SportNotFoundException;
 import apaw.p2.sport.utils.web.http.HttpRequest;
 import apaw.p2.sport.utils.web.http.HttpResponse;
 import apaw.p2.sport.utils.web.http.HttpStatus;
